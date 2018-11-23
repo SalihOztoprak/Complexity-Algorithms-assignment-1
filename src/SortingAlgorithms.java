@@ -24,4 +24,8 @@ public class SortingAlgorithms {
         }
         return unsortedList;
     }
+
+    public void recMinMax(){
+
+    }
 }
