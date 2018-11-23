@@ -25,11 +25,7 @@ public class SortingAlgorithms {
         return unsortedList;
     }
 
-    public  void seqMinMax(int [] unsortedList){
-        int min,max;
-        for (int i = 0; i <unsortedList.length ; i++) {
-
-        }
+    public void recMinMax(){
 
     }
 }
