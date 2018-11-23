@@ -32,4 +32,12 @@ public class Main {
         }
         return unsortedList;
     }
+
+    private long startRecordingTime(){
+        return System.currentTimeMillis();
+    }
+
+    private long endRecordingTime(long startTime){
+        return System.currentTimeMillis() - startTime;
+    }
 }
