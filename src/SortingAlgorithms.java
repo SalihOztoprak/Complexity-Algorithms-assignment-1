@@ -25,7 +25,27 @@ public class SortingAlgorithms {
         return unsortedList;
     }
 
-    public void recMinMax(){
+    /**
+     * Search in the list for the lowest and the highest value
+     * @param unsortedList the list.
+     */
+    public int[] seqMinMax(int[] unsortedList){
+        int min = unsortedList[0];
+        int max = unsortedList[0];
+        int [] list = new int[2];
 
+        for (int i = 0; i <unsortedList.length ; i++) {
+            if(unsortedList[i]<min){
+                min = unsortedList[i];
+            }
+            if (unsortedList[i]>max){
+                max = unsortedList[i];
+            }
+        }
+
+
+        list[0]= min;
+        list[1]= max;
+        return list;
     }
 }
