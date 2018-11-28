@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Main {
     private ListGenerator lG = new ListGenerator();
     private SortingAlgorithms sA = new SortingAlgorithms();
@@ -8,22 +11,25 @@ public class Main {
     }
 
     private void run() {
-        int[] list = lG.numberList(5000);
+        final int[] list = lG.numberList(100);
         assignment1(list);
         assignment2(list);
+        assignment3(list);
     }
-    
+
 
     /**
      * This method will execute all the code for assignment 1
      */
     private void assignment1(int[] list) {
-        int[] nList = list;
+        int[] nList = new int[list.length];
+        System.arraycopy(list, 0, nList, 0, list.length);
+
         long startTime = startRecordingTime();
         nList = sA.sortedMinMax(nList);
-        long endTime = endRecordingTime(startTime);
+        long totalTime = endRecordingTime(startTime);
         System.out.println("------Assignment 1------ ");
-        System.out.println("It took " + endTime + "ms to sort the list");
+        System.out.println("It took " + totalTime + "ms to sort the list");
         System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[list.length - 1] + "\n");
     }
 
@@ -33,13 +39,28 @@ public class Main {
      * @param list
      */
     private void assignment2(int[] list) {
-        int[] nlist = list;
+        int[] nList = new int[list.length];
+        System.arraycopy(list, 0, nList, 0, list.length);
+
         long startTime = startRecordingTime();
-        nlist = sA.seqMinMax(nlist);
-        long endTime = endRecordingTime(startTime);
+        nList = sA.seqMinMax(nList);
+        long totalTime = endRecordingTime(startTime);
         System.out.println("------Assignment 2------ ");
-        System.out.println("It took " + endTime + "ms to sort the list");
-        System.out.println("The lowest value in the list is " + nlist[0] + " and the highest value is " + nlist[nlist.length - 1] + "\n");
+        System.out.println("It took " + totalTime + "ms to sort the list");
+        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[nList.length - 1] + "\n");
+    }
+
+    private void assignment3(int[] list) {
+        int[] nList = new int[list.length];
+        System.arraycopy(list, 0, nList, 0, list.length);
+
+        long startTime = startRecordingTime();
+        nList = sA.recMinMax(nList);
+        long totalTime = endRecordingTime(startTime);
+        System.out.println("------Assignment 3------ ");
+        System.out.println("It took " + totalTime + "ms to sort the list");
+        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[nList.length - 1] + "\n");
+
     }
 
     /**

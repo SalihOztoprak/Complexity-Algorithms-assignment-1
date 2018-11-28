@@ -31,42 +31,41 @@ public class SortingAlgorithms {
         }
         return unsortedList;
     }
+
     /**
      * Search in the list for the lowest and the highest value
+     *
      * @param unsortedList the list.
      */
-    public int[] seqMinMax(int[] unsortedList){
+    public int[] seqMinMax(int[] unsortedList) {
         int min = unsortedList[0];
         int max = unsortedList[0];
-        int [] list = new int[2];
+        int[] list = new int[2];
 
-        for (int i = 0; i <unsortedList.length ; i++) {
-            if(unsortedList[i]<min){
+        for (int i = 0; i < unsortedList.length; i++) {
+            if (unsortedList[i] < min) {
                 min = unsortedList[i];
             }
-            if (unsortedList[i]>max){
+            if (unsortedList[i] > max) {
                 max = unsortedList[i];
             }
         }
 
-
-        list[0]= min;
-        list[1]= max;
+        list[0] = min;
+        list[1] = max;
         return list;
     }
 
-    public int[] recMinMax(int[] list){
-        if (list.length <= 2){
+    public int[] recMinMax(int[] list) {
+        if (list.length < 2) {
             return list;
         } else {
-            int splitNumber = list.length/2;
+            int splitNumber = list.length / 2;
             int[] list1 = new int[splitNumber];
             int[] list2 = new int[list.length - splitNumber];
 
-            for (int i = 0; i < list.length/2; i++) {
-                list1[i] = list[i];
-                list2[i] = list[i+splitNumber];
-            }
+            System.arraycopy(list, 0, list1, 0, list1.length);
+            System.arraycopy(list, list1.length, list2, 0, list2.length);
 
             int[] part1 = recMinMax(list1);
             int[] part2 = recMinMax(list2);
@@ -77,7 +76,7 @@ public class SortingAlgorithms {
 
             Arrays.sort(merge);
 
-            return new int[]{merge[0],merge[merge.length-1]};
+            return new int[]{merge[0], merge[merge.length - 1]};
         }
     }
 }
