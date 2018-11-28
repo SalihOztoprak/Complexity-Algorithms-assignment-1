@@ -12,6 +12,7 @@ public class Main {
     private void run() {
         opdracht1();
     }
+    
 
     /**
      * This method will execute all the code for opdracht 1
