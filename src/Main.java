@@ -11,10 +11,27 @@ public class Main {
     }
 
     private void run() {
-        final int[] list = lG.numberList(100);
-        assignment1(list);
-        assignment2(list);
-        assignment3(list);
+        runall(5000);
+        runall(10000);
+        runall(50000);
+        runall(100000);
+        runall(500000);
+        runall(1000000);
+        runall(5000000);
+        runall(10000000);
+        runall(50000000);
+        runall(100000000);
+    }
+
+    private void runall(int size){
+        System.out.println("Running assignments of size: " + size);
+        final int[] list = lG.numberList(size);
+        for (int i = 1; i < 11; i++) {
+            System.out.println("Round " + i);
+            assignment1(list);
+            assignment2(list);
+            assignment3(list);
+        }
     }
 
 
@@ -28,9 +45,10 @@ public class Main {
         long startTime = startRecordingTime();
         nList = sA.sortedMinMax(nList);
         long totalTime = endRecordingTime(startTime);
-        System.out.println("------Assignment 1------ ");
-        System.out.println("It took " + totalTime + "ms to sort the list");
-        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[list.length - 1] + "\n");
+//        System.out.println("------Assignment 1------ ");
+//        System.out.println("It took " + totalTime + "ns to find the lowest and highest value");
+//        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[list.length - 1] + "\n");
+        System.out.println("Assignment 1: " + totalTime + " ns");
     }
 
     /**
@@ -45,9 +63,10 @@ public class Main {
         long startTime = startRecordingTime();
         nList = sA.seqMinMax(nList);
         long totalTime = endRecordingTime(startTime);
-        System.out.println("------Assignment 2------ ");
-        System.out.println("It took " + totalTime + "ms to sort the list");
-        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[nList.length - 1] + "\n");
+//        System.out.println("------Assignment 2------ ");
+//        System.out.println("It took " + totalTime + "ns to find the lowest and highest value");
+//        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[nList.length - 1] + "\n");
+        System.out.println("Assignment 2: " + totalTime + " ns");
     }
 
     private void assignment3(int[] list) {
@@ -57,9 +76,10 @@ public class Main {
         long startTime = startRecordingTime();
         nList = sA.recMinMax(nList);
         long totalTime = endRecordingTime(startTime);
-        System.out.println("------Assignment 3------ ");
-        System.out.println("It took " + totalTime + "ms to sort the list");
-        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[nList.length - 1] + "\n");
+//        System.out.println("------Assignment 3------ ");
+//        System.out.println("It took " + totalTime + "ns to find the lowest and highest value");
+//        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[nList.length - 1] + "\n");
+        System.out.println("Assignment 3: " + totalTime + " ns\n");
 
     }
 
@@ -69,7 +89,7 @@ public class Main {
      * @return the startTime
      */
     private long startRecordingTime() {
-        return System.currentTimeMillis();
+        return System.nanoTime();
     }
 
     /**
@@ -79,6 +99,6 @@ public class Main {
      * @return the time between the startTime and endTime in milliseconds
      */
     private long endRecordingTime(long startTime) {
-        return System.currentTimeMillis() - startTime;
+        return (System.nanoTime() - startTime);
     }
 }
