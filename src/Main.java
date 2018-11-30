@@ -1,6 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class Main {
     private ListGenerator lG = new ListGenerator();
     private SortingAlgorithms sA = new SortingAlgorithms();
