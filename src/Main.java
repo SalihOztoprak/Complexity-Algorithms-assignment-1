@@ -3,28 +3,27 @@ public class Main {
     private SortingAlgorithms sA = new SortingAlgorithms();
 
     public static void main(String[] args) {
-
         new Main().run();
     }
 
     private void run() {
-        runall(5000);
-        runall(10000);
-        runall(50000);
-        runall(100000);
-        runall(500000);
-        runall(1000000);
-        runall(5000000);
-        runall(10000000);
-        runall(50000000);
-        runall(100000000);
+        runallAssignments(5000, 10);
+        runallAssignments(10000, 10);
+        runallAssignments(50000, 10);
+        runallAssignments(100000, 10);
+        runallAssignments(500000, 10);
+        runallAssignments(1000000, 10);
+        runallAssignments(5000000, 10);
+        runallAssignments(10000000, 10);
+        runallAssignments(50000000, 10);
+        runallAssignments(100000000, 10);
     }
 
-    private void runall(int size) {
-        System.out.println("Running assignments of size: " + size);
+    private void runallAssignments(int size, int times) {
+        System.out.println("Size: " + size);
         final int[] list = lG.numberList(size);
-        for (int i = 1; i < 11; i++) {
-            System.out.println("Round " + i);
+        for (int i = 0; i < times; i++) {
+            System.out.println("Round: " + times+1);
             assignment1(list);
             assignment2(list);
             assignment3(list);
@@ -42,10 +41,9 @@ public class Main {
         long startTime = startRecordingTime();
         nList = sA.sortedMinMax(nList);
         long totalTime = endRecordingTime(startTime);
-//        System.out.println("------Assignment 1------ ");
-//        System.out.println("It took " + totalTime + "ns to find the lowest and highest value");
-//        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[list.length - 1] + "\n");
-        System.out.println("Assignment 1: " + totalTime + " ns");
+        System.out.println("------Assignment 1------ ");
+        System.out.println("It took " + totalTime + "ns to find the lowest and highest value");
+        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[list.length - 1] + "\n");
     }
 
     /**
@@ -60,12 +58,16 @@ public class Main {
         long startTime = startRecordingTime();
         nList = sA.seqMinMax(nList);
         long totalTime = endRecordingTime(startTime);
-//        System.out.println("------Assignment 2------ ");
-//        System.out.println("It took " + totalTime + "ns to find the lowest and highest value");
-//        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[nList.length - 1] + "\n");
-        System.out.println("Assignment 2: " + totalTime + " ns");
+        System.out.println("------Assignment 2------ ");
+        System.out.println("It took " + totalTime + "ns to find the lowest and highest value");
+        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[nList.length - 1] + "\n");
     }
 
+    /**
+     * This method will execute all the code for assignment 3
+     *
+     * @param list
+     */
     private void assignment3(int[] list) {
         int[] nList = new int[list.length];
         System.arraycopy(list, 0, nList, 0, list.length);
@@ -73,11 +75,9 @@ public class Main {
         long startTime = startRecordingTime();
         nList = sA.recMinMax(nList);
         long totalTime = endRecordingTime(startTime);
-//        System.out.println("------Assignment 3------ ");
-//        System.out.println("It took " + totalTime + "ns to find the lowest and highest value");
-//        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[nList.length - 1] + "\n");
-        System.out.println("Assignment 3: " + totalTime + " ns\n");
-
+        System.out.println("------Assignment 3------ ");
+        System.out.println("It took " + totalTime + "ns to find the lowest and highest value");
+        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[nList.length - 1] + "\n");
     }
 
     /**
