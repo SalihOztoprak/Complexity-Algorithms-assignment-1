@@ -20,7 +20,7 @@ public class Main {
         runall(100000000);
     }
 
-    private void runall(int size){
+    private void runall(int size) {
         System.out.println("Running assignments of size: " + size);
         final int[] list = lG.numberList(size);
         for (int i = 1; i < 11; i++) {
