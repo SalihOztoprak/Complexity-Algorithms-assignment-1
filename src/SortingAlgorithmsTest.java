@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SortingAlgorithmsTest {
 
-    int[] unsortedList;
-    int[] sortedList;
-    SortingAlgorithms sA;
+    private int[] unsortedList;
+    private int[] sortedList;
+    private SortingAlgorithms sA;
 
     @BeforeAll
     public void startUp() {
@@ -46,7 +46,7 @@ class SortingAlgorithmsTest {
         int[] nList = new int[unsortedList.length];
         System.arraycopy(unsortedList, 0, nList, 0, unsortedList.length);
 
-        nList = sA.recMinMax(nList);
+        nList = sA.recMinMax(nList, 0, nList.length-1);
 
         assertEquals(sortedList[0],nList[0],"recMinMax :The lowest number is not correct");
         assertEquals(sortedList[5],nList[nList.length-1],"recMinMax : The highest number is not correct");

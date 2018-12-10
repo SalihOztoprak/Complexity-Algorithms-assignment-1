@@ -9,8 +9,8 @@ public class SortingAlgorithms {
     /**
      * This method will sort a given array
      *
-     * @param unsortedList the list that you want to sort
-     * @return the sorted list
+     * @param unsortedList the values from this list
+     * @return the lowest and highest value
      */
     public int[] sortedMinMax(int[] unsortedList) {
         for (int i = 0; i < unsortedList.length; i++) {
@@ -24,13 +24,19 @@ public class SortingAlgorithms {
             unsortedList[i] = unsortedList[minIndex];
             unsortedList[minIndex] = temp;
         }
-        return unsortedList;
+
+        int[] lowHigh = new int[2];
+        lowHigh[0] = unsortedList[0];
+        lowHigh[1] = unsortedList[unsortedList.length - 1];
+
+        return lowHigh;
     }
 
     /**
      * Search in the list for the lowest and the highest value
      *
-     * @param unsortedList the list.
+     * @param unsortedList the values from this list
+     * @return the lowest and highest value
      */
     public int[] seqMinMax(int[] unsortedList) {
         int min = unsortedList[0];
@@ -51,27 +57,36 @@ public class SortingAlgorithms {
         return list;
     }
 
-    public int[] recMinMax(int[] list) {
-        if (list.length < 2) {
-            return list;
+    /**
+     * Split the list until you have two or less items left, then return the lowest and highest value.
+     *
+     * @param list the values from this list
+     * @param beginIndex the index where this method starts looking
+     * @param listLength the length of the list
+     * @return the lowest and highest value
+     */
+    public int[] recMinMax(int[] list, int beginIndex, int listLength) {
+        if (listLength == 1) {
+            return new int[]{list[beginIndex], list[beginIndex]};
         } else {
-            int splitNumber = list.length / 2;
-            int[] list1 = new int[splitNumber];
-            int[] list2 = new int[list.length - splitNumber];
+            int[] part1 = recMinMax(list, beginIndex, listLength / 2);
+            int[] part2 = recMinMax(list, beginIndex + listLength / 2, listLength / 2);
 
-            System.arraycopy(list, 0, list1, 0, list1.length);
-            System.arraycopy(list, list1.length, list2, 0, list2.length);
+            int[] newList = new int[2];
 
-            int[] part1 = recMinMax(list1);
-            int[] part2 = recMinMax(list2);
+            if (part1[0] <= part2[0]) {
+                newList[0] = part1[0];
+            } else {
+                newList[0] = part2[0];
+            }
 
-            int[] merge = new int[part1.length + part2.length];
-            System.arraycopy(part1, 0, merge, 0, part1.length);
-            System.arraycopy(part2, 0, merge, part1.length, part2.length);
+            if (part1[1] >= part2[1]) {
+                newList[1] = part1[1];
+            } else {
+                newList[1] = part2[1];
+            }
 
-            Arrays.sort(merge);
-
-            return new int[]{merge[0], merge[merge.length - 1]};
+            return newList;
         }
     }
 }

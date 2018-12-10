@@ -7,32 +7,26 @@ public class Main {
     }
 
     private void run() {
-        runallAssignments(5000, 10);
-        runallAssignments(10000, 10);
-        runallAssignments(50000, 10);
-        runallAssignments(100000, 10);
-        runallAssignments(500000, 10);
-        runallAssignments(1000000, 10);
-        runallAssignments(5000000, 10);
-        runallAssignments(10000000, 10);
-        runallAssignments(50000000, 10);
-        runallAssignments(100000000, 10);
+        runAll(50000);
     }
 
-    private void runallAssignments(int size, int times) {
-        System.out.println("Size: " + size);
+    private void runAll(int size) {
+        System.out.print("Size: " + size + ",");
         final int[] list = lG.numberList(size);
-        for (int i = 0; i < times; i++) {
-            System.out.println("Round: " + times+1);
+
+        for (int i = 0; i < 10; i++) {
             assignment1(list);
             assignment2(list);
             assignment3(list);
         }
+        System.out.print("\n");
     }
 
 
     /**
      * This method will execute all the code for assignment 1
+     *
+     * @param list the lowest and highest items of this list
      */
     private void assignment1(int[] list) {
         int[] nList = new int[list.length];
@@ -43,13 +37,13 @@ public class Main {
         long totalTime = endRecordingTime(startTime);
         System.out.println("------Assignment 1------ ");
         System.out.println("It took " + totalTime + "ns to find the lowest and highest value");
-        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[list.length - 1] + "\n");
+        System.out.println("The lowest value in the list is " + nList[0] + " and the highest value is " + nList[1] + "\n");
     }
 
     /**
      * this method will execute all the code for assignment 2
      *
-     * @param list
+     * @param list the lowest and highest items of this list
      */
     private void assignment2(int[] list) {
         int[] nList = new int[list.length];
@@ -66,14 +60,14 @@ public class Main {
     /**
      * This method will execute all the code for assignment 3
      *
-     * @param list
+     * @param list the lowest and highest items of this list
      */
     private void assignment3(int[] list) {
         int[] nList = new int[list.length];
         System.arraycopy(list, 0, nList, 0, list.length);
 
         long startTime = startRecordingTime();
-        nList = sA.recMinMax(nList);
+        nList = sA.recMinMax(nList, 0, nList.length);
         long totalTime = endRecordingTime(startTime);
         System.out.println("------Assignment 3------ ");
         System.out.println("It took " + totalTime + "ns to find the lowest and highest value");
