@@ -46,7 +46,7 @@ class SortingAlgorithmsTest {
         int[] nList = new int[unsortedList.length];
         System.arraycopy(unsortedList, 0, nList, 0, unsortedList.length);
 
-        nList = sA.recMinMax(nList, 0, nList.length-1);
+        nList = sA.recMinMax(nList, 0, nList.length);
 
         assertEquals(sortedList[0],nList[0],"recMinMax :The lowest number is not correct");
         assertEquals(sortedList[5],nList[nList.length-1],"recMinMax : The highest number is not correct");

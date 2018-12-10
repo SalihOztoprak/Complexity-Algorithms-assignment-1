@@ -7,13 +7,15 @@ public class Main {
     }
 
     private void run() {
-        runAll(50000);
+        int[] n  ={5000,10000,50000,100000,500000,1000000,5000000,10000000,50000000,100000000};
+        for (int i = 0; i <n.length ; i++) {
+            runAll(n[i]);
+        }
     }
 
     private void runAll(int size) {
-        System.out.print("Size: " + size + ",");
+        System.out.print("Size: " + size + ",\n");
         final int[] list = lG.numberList(size);
-
         for (int i = 0; i < 10; i++) {
             assignment1(list);
             assignment2(list);
