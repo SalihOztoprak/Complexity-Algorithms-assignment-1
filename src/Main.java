@@ -17,6 +17,7 @@ public class Main {
         System.out.print("Size: " + size + ",\n");
         final int[] list = lG.numberList(size);
         for (int i = 0; i < 10; i++) {
+            System.out.println("Round: " +(i+1));
             assignment1(list);
             assignment2(list);
             assignment3(list);
